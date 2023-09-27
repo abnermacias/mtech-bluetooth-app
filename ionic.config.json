@@ -1,0 +1,7 @@
+{
+  "name": "mtech-bluetooth-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
