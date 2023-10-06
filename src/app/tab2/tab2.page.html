@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Advertise this Bluetooth Device </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-button (click)="advertiseDevice()"
+    >Advertise Bluetooth Device</ion-button
+  >
+
+  <ion-alert
+    [isOpen]="isBluetoothAlertOpen"
+    header="Alert"
+    subHeader="Bluetooth Disabled"
+    message="Please enable Bluetooth to continue."
+    [buttons]="bluetoothAlertButtons"
+    (didDismiss)="setBluetoothAlertOpen(false)"
+  ></ion-alert>
 </ion-content>

@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Connect to Bluetooth Device </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-button (click)="discoverDevices()"
+    >Discover Bluetooth Devices</ion-button
+  >
+
+  <ion-button (click)="clearDevices()">Clear List</ion-button>
+
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let discoveredDevice of discoveredDevices">
+      <ion-label>
+        {{discoveredDevice.name ?? discoveredDevice.deviceId}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="connectToMTechDevice()"
+    >Connect to MTech Device</ion-button
+  >
+
+  <ion-alert
+    [isOpen]="isBluetoothAlertOpen"
+    header="Alert"
+    subHeader="Bluetooth Disabled"
+    message="Please enable Bluetooth to continue."
+    [buttons]="bluetoothAlertButtons"
+    (didDismiss)="setBluetoothAlertOpen(false)"
+  ></ion-alert>
 </ion-content>
